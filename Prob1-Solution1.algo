@@ -1,0 +1,42 @@
+ALGORITHM Checkpoint
+VAR
+    set1 : ARRAY_OF INTEGER;
+    set2 : ARRAY_OF INTEGER;
+    check : BOOLEAN;
+    sum : INTEGER;
+    i,j : INTEGER;
+BEGIN
+    Write('your first set');
+    Read(set1);
+    Write('your second set');
+    Read(set2);
+
+
+    FOR i FROM 0 TO set1.length-1 STEP 1 DO
+        check:=false;
+        FOR j FROM 0 TO set2.length-1 STEP 1  DO
+            IF (set1[i]=set2[j]) THEN
+                check:= true;
+            END_IF
+        END_FOR
+        IF (check=false) THEN
+            sum:=sum+set1[i]
+        END_IF
+    END_FOR
+
+
+    FOR i FROM 0 TO set2.length-1 STEP 1 DO
+        check:=false;
+        FOR j FROM 0 TO set1.length-1 STEP 1  DO
+            IF (set2[i]=set1[j]) THEN
+                check:= true;
+            END_IF
+        END_FOR
+        IF (check=false) THEN
+            sum:=sum+set2[i];
+        END_IF
+    END_FOR
+
+
+    Write(sum);
+END

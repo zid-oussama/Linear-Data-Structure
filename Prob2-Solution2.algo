@@ -1,0 +1,44 @@
+ALGORITHM Checkpoint
+VAR
+    htab : HASH_TABLE<INTEGER,INTEGER>
+    set1 : ARRAY_OF INTEGER;
+    set2 : ARRAY_OF INTEGER;
+    sum : INTEGER;
+    i,j,count : INTEGER;
+BEGIN
+    Write('your first set');
+    Read(set1);
+    Write('your second set');
+    Read(set2);
+    FOR i FROM 0 TO set1.length-1 STEP 1 DO
+        htab.insert(set1[i],1)
+    END_FOR
+
+
+    FOR i FROM 0 TO set2.length-1 STEP 1 DO
+        IF (htab.lookup(set2[i])) THEN
+            count:=htab.get(set2[i]);
+            htab.insert(set2[i],count+1);
+        ELSE 
+            htab.insert(set2[i],1)
+        END_IF  
+    END_FOR
+
+
+    
+        FOR i FROM 0 TO set1.length-1 STEP 1 DO 
+            IF (htab.get(set1[i])=2) THEN
+                sum:=sum+set1[i]
+            END_IF
+        END_FOR
+    
+        FOR i FROM 0 TO set2.length-1 STEP 1 DO 
+            IF (htab.get(set2[i])=2) THEN
+                sum:=sum+set2[i]
+            END_IF
+        END_FOR
+
+
+    Write(sum);
+    
+END
